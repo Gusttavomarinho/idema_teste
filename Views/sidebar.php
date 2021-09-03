@@ -14,7 +14,7 @@
       </div>
       <div class="info">
         <a href="<?= BASE_URL; ?>" class="d-block">
-          <?= 'User Sistema' ?></a>
+          <?= isset($_SESSION['global_user_info']) ? $_SESSION['global_user_info']['username'] : 'Usuario Não Logado'  ?></a>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="<?= BASE_URL ?>processos" class="nav-link">
+          <a href="<?= BASE_URL ?>processo" class="nav-link">
             <i class="fas fa-list"></i>
             <p>
               Listar Processos

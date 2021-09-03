@@ -42,6 +42,10 @@
 
   <script>
     var baseUrl = '<?= BASE_URL ?>';
+    //criar os datatabless
+    $(document).ready(function() {
+      $('#myTable-processos').DataTable();
+    });
   </script>
 </body>
 
