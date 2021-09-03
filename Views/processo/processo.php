@@ -18,7 +18,7 @@
           <tbody>
             <?php foreach ($processos as $key => $processo) : ?>
               <tr>
-                <th scope="row"><button class="btn btn-info">Adicionar a Solicitação</button></th>
+                <th scope="row"><button class="btn btn-info btn-add-p-solicitacao" value="<?= $processo['id'] ?>">Adicionar a Solicitação</button></th>
                 <th scope="row"><?= $processo['id'] ?></th>
                 <td><?= $processo['create_at'] ?></td>
                 <td><?= $processo['users_id'] == $_SESSION['global_user_info']['id'] ?  $_SESSION['global_user_info']['username']  : ' Usuario Invalido'  ?></td>
@@ -26,6 +26,25 @@
             <?php endforeach ?>
           </tbody>
         </table>
+        <!--inicio do form -->
+        <hr>
+        <h3>Cadastrar Solicitações</h3>
+        <hr>
+        <form action="">
+          <div id="">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" placeholder="digite seu nome" name="nome" id="nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" placeholder="digite seu email" name="email" id="email" required>
+            </div>
+            <div class="form-group" id="checkboxs">
+              <p id="msg_form_add_processos" class="text-danger">Adicione Processos a Solicitação</p>
+            </div>
+            <input type="submit" value="enviar" class="btn btn-success" id="btn_cad_solicitacao">
+        </form>
         <!--end conteudo-->
       </div>
     </div>

@@ -39,6 +39,7 @@
   <script src="<?= BASE_URL ?>assets/js/jquery.dataTables.min.js"></script>
   <script src="<?= BASE_URL ?>assets/js/toastr.min.js"></script>
   <script src="<?= BASE_URL ?>assets/js/chosen.jquery.js"></script>
+  <script src="<?= BASE_URL ?>assets/js/add_processos_a_solicitacao.js"></script>
 
   <script>
     var baseUrl = '<?= BASE_URL ?>';
