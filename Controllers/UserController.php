@@ -37,9 +37,6 @@ class UserController extends Controller
 		];
 		$id = intval(filter_input(INPUT_GET, 'id'));
 		$dados['usuario'] = $this->user->getById($id);
-		$hospital = new Hospital();
-		$dados['hospitais'] = $hospital->getAll();
-		$dados['hospitalSelecionado'] = $hospital->getById($dados['usuario']['id_hospital']);
 		$this->loadTemplate('usuarios/editar', $dados);
 	}
 
@@ -48,7 +45,6 @@ class UserController extends Controller
 		//registrando o log
 		$usuario_logado = $this->user->infoUser();
 		$dados_log = json_encode($post);
-		$this->user->logs($usuario_logado['id'], 'editado', $dados_log);
 	}
 
 	public function editar_action()
@@ -112,7 +108,6 @@ class UserController extends Controller
 			//registrando o log
 			$usuario_logado = $this->user->infoUser();
 			$dados_log = json_encode($_POST);
-			$this->user->logs($usuario_logado['id'], 'deletado', $dados_log);
 
 			$deletar = $this->user->delete($id);
 			if ($deletar) {
@@ -134,7 +129,6 @@ class UserController extends Controller
 			//registrando o log
 			$usuario_logado = $this->user->infoUser();
 			$dados_log = json_encode($_POST);
-			$this->user->logs($usuario_logado['id'], 'ativado', $dados_log);
 
 			$ativar = $this->user->activate($id);
 			if ($ativar) {

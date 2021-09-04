@@ -29,16 +29,18 @@
             </p>
           </a>
         </li>
+        <?php if ($_SESSION['global_user_info']['perfil'] == 1) : ?>
+          <li class="nav-item">
+            <a href="<?= BASE_URL ?>solicitacao" class="nav-link">
+              <i class="fas fa-link"></i>
+              <p>
+                Solicitações Pendentes
+              </p>
+            </a>
+          </li>
+        <?php endif ?>
         <li class="nav-item">
-          <a href="<?= BASE_URL ?>" class="nav-link">
-            <i class="fas fa-link"></i>
-            <p>
-              Solicitações Pendentes
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="<?= BASE_URL ?>" class="nav-link">
+          <a href="<?= BASE_URL ?>home/sair" class="nav-link">
             <i class="fas fa-sign-out-alt nav-icon"></i>
             <p>Sair</p>
           </a>

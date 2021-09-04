@@ -15,6 +15,12 @@ class ProcessoController extends Controller
 	{
 		$this->processo = new Processo();
 		$this->user = new Users();
+
+		//verificar se esta logado
+		if (!$this->user->verifyLogin()) {
+			header("Location:" . BASE_URL . "login");
+			exit;
+		}
 	}
 
 	public function index()

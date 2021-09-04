@@ -22,7 +22,7 @@
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
           <img src="img/small_suinin_logo.png" alt="" srcset="">
-          <span class="h1"><b>Cadastre-se</b></span>
+          <span class="h1"><b>Cadastre-se Usuario Externo</b></span>
         </div>
         <div class="card-body">
           <form action="<?= BASE_URL ?>login/signup" method="POST">

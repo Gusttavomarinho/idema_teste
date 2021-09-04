@@ -1,5 +1,5 @@
 <div class="content-wrapper h-100">
-  <div class="container">
+  <div class="container-fluid">
     <div class="card">
       <div class="card-header">
         <h3>Lista de Processos do usuario: <span class="text-primary"><?= $_SESSION['global_user_info']['username'] ?></span></h3>
@@ -9,7 +9,7 @@
         <table class="table" id="myTable-processos">
           <thead>
             <tr>
-              <th scope="col">Ação</th>
+              <!-- <th scope="col">Ação</th> -->
               <th scope="col">Codigo</th>
               <th scope="col">Data</th>
               <th scope="col">Usuario</th>
@@ -18,7 +18,7 @@
           <tbody>
             <?php foreach ($processos as $key => $processo) : ?>
               <tr>
-                <th scope="row"><button class="btn btn-info btn-add-p-solicitacao" value="<?= $processo['id'] ?>">Adicionar a Solicitação</button></th>
+                <!-- <th scope="row"><button class="btn btn-info btn-add-p-solicitacao" value="<?= $processo['id'] ?>">Adicionar a Solicitação</button></th> -->
                 <th scope="row"><?= $processo['id'] ?></th>
                 <td><?= $processo['create_at'] ?></td>
                 <td><?= $processo['users_id'] == $_SESSION['global_user_info']['id'] ?  $_SESSION['global_user_info']['username']  : ' Usuario Invalido'  ?></td>
@@ -28,9 +28,10 @@
         </table>
         <!--inicio do form -->
         <hr>
-        <h3>Cadastrar Solicitações</h3>
+        <h3>Cadastrar Solicitação</h3>
+        <P id="retorno-form-solicitacao" class="alert-success"></P>
         <hr>
-        <form action="">
+        <form id="form-solicitacao">
           <div id="">
             <div class="form-group">
               <label for="nome">Nome</label>
@@ -41,7 +42,15 @@
               <input type="email" placeholder="digite seu email" name="email" id="email" required>
             </div>
             <div class="form-group" id="checkboxs">
-              <p id="msg_form_add_processos" class="text-danger">Adicione Processos a Solicitação</p>
+              <!--<p id="msg_form_add_processos" class="text-danger">Adicione Processos a Solicitação</p>-->
+            </div>
+            <div class="form-group">
+              <label for="select2_processos">Processos:</label>
+              <select class="js-processos-multiple form-control" name="processos[]" multiple="multiple" id="select2_processos">
+                <?php foreach ($processos as $key => $processo) : ?>
+                  <option value="<?= $processo['id'] ?>">Processo Codigo : <?= $processo['id'] ?></option>
+                <?php endforeach ?>
+              </select>
             </div>
             <input type="submit" value="enviar" class="btn btn-success" id="btn_cad_solicitacao">
         </form>

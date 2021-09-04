@@ -34,9 +34,17 @@ class HomeController extends Controller
 	public function sair()
 	{
 		unset($_SESSION["hashlogin"]);
+		unset($_SESSION['global_user_info']);
 		$_SESSION = [];
 		$_SESSION['msg'] = 'usuario-deslogado';
 		header("Location:" . BASE_URL . "login");
+		session_destroy();
+		exit;
+	}
+
+	public function sempermissao()
+	{
+		echo 'Sem Permissao!';
 		exit;
 	}
 }

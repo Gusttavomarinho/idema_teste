@@ -5,7 +5,7 @@ namespace Models;
 use \Core\Model;
 
 
-class Processo extends Model
+class Documento extends Model
 {
 
     public function getAll()
@@ -13,7 +13,7 @@ class Processo extends Model
         $array = array();
 
         try {
-            $sql = "SELECT * FROM processos";
+            $sql = "SELECT * FROM documentos";
             $sql = $this->db->prepare($sql);
             $sql->execute();
 
@@ -27,12 +27,12 @@ class Processo extends Model
         return $array;
     }
 
-    public function getAllbyuser($id)
+    public function getAllbyProcessos($id)
     {
         $array = array();
 
         try {
-            $sql = "SELECT * FROM processos where users_id=:id";
+            $sql = "SELECT * FROM documentos where processos_id=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id);
             $sql->execute();
@@ -54,7 +54,7 @@ class Processo extends Model
         $array = array();
 
         try {
-            $sql = "SELECT * FROM processos where id=:id";
+            $sql = "SELECT * FROM documentos where id=:id";
             $sql = $this->db->prepare($sql);
             $sql->bindValue(':id', $id);
             $sql->execute();

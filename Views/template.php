@@ -15,9 +15,7 @@
 
     <?php $this->loadViewInTemplate($viewName, $viewData); ?>
 
-    <!-- Footer -->
-    <?php $this->loadViewInTemplate('footer', $viewData); ?>
-    <!-- Footer -->
+
   </div>
   <!-- ./wrapper -->
 
@@ -40,12 +38,22 @@
   <script src="<?= BASE_URL ?>assets/js/toastr.min.js"></script>
   <script src="<?= BASE_URL ?>assets/js/chosen.jquery.js"></script>
   <script src="<?= BASE_URL ?>assets/js/add_processos_a_solicitacao.js"></script>
+  <!-- select2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
   <script>
     var baseUrl = '<?= BASE_URL ?>';
     //criar os datatabless
     $(document).ready(function() {
       $('#myTable-processos').DataTable();
+    });
+    $(document).ready(function() {
+      $('#myTable-solicitacoes-pendentes').DataTable();
+    });
+
+    $(document).ready(function() {
+      $('#Mytable-processos_da_solicitacao').DataTable();
     });
   </script>
 </body>

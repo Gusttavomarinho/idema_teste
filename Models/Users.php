@@ -154,11 +154,10 @@ class Users extends Model
   public function updateUser($username, $id_hospital, $perfil, $ativo, $id)
   {
     try {
-      $sql = "UPDATE users SET username=:username, id_hospital=:id_hospital, perfil=:perfil, ativo=:ativo, update_at=:updated WHERE id=:id";
+      $sql = "UPDATE users SET username=:username, perfil=:perfil, ativo=:ativo, update_at=:updated WHERE id=:id";
       $updated = date('Y-m-d H:i:s');
       $sql = $this->db->prepare($sql);
       $sql->bindValue(':username', $username);
-      $sql->bindValue(':id_hospital', $id_hospital);
       $sql->bindValue(':perfil', $perfil);
       $sql->bindValue(':ativo', $ativo);
       $sql->bindValue(':updated', $updated);
@@ -172,11 +171,10 @@ class Users extends Model
   public function updateUserWithPass($username, $id_hospital, $perfil, $ativo, $pass, $id)
   {
     try {
-      $sql = "UPDATE users SET username=:username, id_hospital=:id_hospital, perfil=:perfil, ativo=:ativo, pass=:pass, update_at=:updated WHERE id=:id";
+      $sql = "UPDATE users SET username=:username, perfil=:perfil, ativo=:ativo, pass=:pass, update_at=:updated WHERE id=:id";
       $updated = date('Y-m-d H:i:s');
       $sql = $this->db->prepare($sql);
       $sql->bindValue(':username', $username);
-      $sql->bindValue(':id_hospital', $id_hospital);
       $sql->bindValue(':perfil', $perfil);
       $sql->bindValue(':ativo', $ativo);
       $sql->bindValue(':pass', $pass);
@@ -234,34 +232,8 @@ class Users extends Model
       return false;
     }
   }
-
-  public function logs($id_usuario, $atividade, $dados)
-  {
-    $ip_usuario = $_SERVER['REMOTE_ADDR'];
-    if ($atividade == 'editado' || $atividade == 'deletado') {
-      $id_buscar = json_decode($dados);
-      $dados_antigo = $this->getById($id_buscar->id);
-      $dados = 'dados_antigos: ' . json_encode($dados_antigo);
-    }
-
-    try {
-      $sql = "INSERT INTO logs (ip_usuario,id_usuario,atividade,tabela,dados) VALUES(:ip_usuario,:id_usuario,:atividade,:tabela,:dados)";
-      $sql = $this->db->prepare($sql);
-      $sql->bindValue(':ip_usuario', $ip_usuario);
-      $sql->bindValue(':id_usuario', $id_usuario);
-      $sql->bindValue(':atividade', $atividade);
-      $sql->bindValue(':tabela', 'users');
-      $sql->bindValue(':dados', $dados);
-      $sql->execute();
-      return true;
-    } catch (\PDOException $error) {
-      echo "ERROR" . $error->getMessage();
-      return false;
-    }
-  }
 }
 
 /* LISTA DE PERFIL */
 // PERFIL 1 = ADMIN
-// PERFIL 2 = GERENTE 
-// PERFIL 3 = USUARIO
+// PERFIL 2 = USUARIO EXTERNO
